@@ -1,11 +1,12 @@
-import { Trophy, Ellipsis, BookOpenCheck } from "lucide-react";
-export default function GameCard() {
+import { Trophy, BookOpenCheck } from "lucide-react";
+export default function GameCard({name}) {
+  const filled = false
   return (
-    <div className="flex bg-[#2D3B4F] w-5/6 h-25 rounded-md p-6 items-center justify-between">
-      <h3 className="font-bold text-lg">Game Name</h3>
+    <div className="flex bg-slate-700 w-5/6 h-25 rounded-md py-6 px-9 items-center justify-between max-w-150 gap-5">
+      <h3 className="font-bold text-lg truncate overflow-hidden">{name}</h3>
       <div className="flex gap-6 items-center justify-center">
-        <BookOpenCheck width={25}/>
-        <Trophy width={25}/>
+        <BookOpenCheck size={25} color={filled? "#22C55E" : "#fff"} />
+        <Trophy size={25} color={filled? "#EAB308" : "#fff"}/>
       </div>
     </div>
   );

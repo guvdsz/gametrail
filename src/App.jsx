@@ -1,23 +1,20 @@
-import { useState } from "react";
-import GameCard from "./components/GameCard";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import useLocalStorageState from "use-local-storage-state";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 function App() {
+  const [gameList, setGameList] = useLocalStorageState("gameList", {
+    defaultValue: [],
+  });
   return (
-    <>
-      <main className="bg-[#0F172A] w-full text-white flex flex-col items-center pb-8">
-        <header className="text-center py-8">
-          <h2 className="font-bold text-2xl">Your Games</h2>
-          <p className="text-gray-400">Track your gaming journey</p>
-        </header>
-        <section className="w-full flex flex-col items-center gap-6">
-          <GameCard />
-          <GameCard />
-          <GameCard />
-          <GameCard />
-          <GameCard />
-          <GameCard />
-        </section>
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home gameList={gameList} setGameList={setGameList}/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
