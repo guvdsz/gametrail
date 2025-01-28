@@ -3,6 +3,7 @@ import { Plus, Gamepad } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import AddGameModal from "../components/AddGameModal";
+
 export default function Home({ gameList, setGameList, isAuth }) {
   const [toggleModal, setToggleModal] = useState(false);
   const navigate = useNavigate();
@@ -22,11 +23,8 @@ export default function Home({ gameList, setGameList, isAuth }) {
           name={game.name}
           key={game.id}
           id={game.id}
-          platform={game.platform}
           complete={game.complete}
-          platinum={game.platinum}
           setGameList={setGameList}
-          gameList={gameList}
         />
       );
     });
@@ -50,9 +48,9 @@ export default function Home({ gameList, setGameList, isAuth }) {
         </div>
         <button
           onClick={handleModal}
-          className="bg-purple-700 hover:bg-purple-500 transition-colors py-2.5 px-5 rounded-md font-bold flex items-center justify-center gap-2.5 w-fit cursor-pointer"
+          className="fixed top-5 right-20 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 w-10"
         >
-          <Plus size={20} color="#fff" /> Add Game
+          <Plus size={20} color="#fff" />
         </button>
       </header>
       <section className="w-full flex flex-col items-center gap-6">

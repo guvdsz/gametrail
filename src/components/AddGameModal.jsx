@@ -12,7 +12,6 @@ export default function AddGameModal({
       name: form.get("name-input"),
       platform: form.get("platform-input"),
       complete: false,
-      platinum: false,
       id: nanoid()
     };
     setGameList([...gameList, newGame]);
@@ -40,9 +39,9 @@ export default function AddGameModal({
             className="placeholder-gray-500 py-1.5 px-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors"
           >
             <option value="pc">PC</option>
-            <option value="pc">Switch</option>
-            <option value="pc">Playstation</option>
-            <option value="pc">XBOX</option>
+            <option value="switch">Switch</option>
+            <option value="playstation">Playstation</option>
+            <option value="xbox">Xbox</option>
           </select>
           <button
             type="submit"

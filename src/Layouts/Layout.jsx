@@ -5,7 +5,7 @@ export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   return (
-    <main className="bg-slate-900 w-full text-white flex flex-col items-center py-10 relative gap-10">
+    <main className="bg-slate-900 w-full text-white flex flex-col items-center py-15 relative gap-12.5">
       <div
         className={`bg-[#1d293de7] w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 ${
           toggle ? "translate-x-0" : "-translate-x-full"
@@ -39,7 +39,7 @@ export default function Layout({ isAuth, setIsAuth }) {
         </button>
       </div>
       <button
-        className="fixed top-5 right-5 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors"
+        className="fixed top-5 right-5 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 flex items-center justify-center w-10"
         onClick={() => setToggle((prevToggle) => !prevToggle)}
       >
         {!toggle ? <Menu size={25} /> : <X size={25} />}
