@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import useLocalStorageState from "use-local-storage-state";
-import Layout from "./pages/Layout";
+import Layout from "./Layouts/Layout";
 import Home from "./pages/Home";
-import AuthRequired from "./pages/AuthRequired";
+import AuthRequired from "./Layouts/AuthRequired";
 import Login  from "./pages/Login";
 function App() {
   const [gameList, setGameList] = useLocalStorageState("gameList", {

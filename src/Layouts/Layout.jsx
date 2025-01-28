@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <main className="bg-slate-900 w-full text-white flex flex-col items-center py-10 relative gap-10">
       <div
@@ -30,7 +30,10 @@ export default function Layout({ isAuth, setIsAuth }) {
             !isAuth
               ? "bg-[#00a63dbb] hover:bg-green-500"
               : "bg-[#fb2c369c] hover:bg-red-500"
-          } w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm`} onClick={isAuth ? () => setIsAuth((prev) => !prev) :() => navigate("login")}
+          } w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm`}
+          onClick={
+            isAuth ? () => setIsAuth((prev) => !prev) : () => navigate("login")
+          }
         >
           {isAuth ? <LogOut size={15} /> : <LogIn size={15} />}
         </button>

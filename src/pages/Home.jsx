@@ -14,7 +14,7 @@ export default function Home({gameList, setGameList, isAuth}) {
     setToggleModal(true)
   }
   const gameCards =
-    gameList &&
+    (gameList && isAuth) && 
     gameList.map((game, index) => {
       return <GameCard name={game.name} key={index} />;
     });
@@ -35,7 +35,7 @@ export default function Home({gameList, setGameList, isAuth}) {
         </button>
       </header>
       <section className="w-full flex flex-col items-center gap-6">
-        {gameList.length > 0 ? gameCards : "No games to see..."}
+        {gameCards ? gameCards : "No games to see..."}
       </section>
     </>
   );
