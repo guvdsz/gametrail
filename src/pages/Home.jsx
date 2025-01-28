@@ -22,7 +22,7 @@ export default function Home({gameList, setGameList}) {
           onClick={setToggleModal}
           className="bg-purple-700 hover:bg-purple-500 transition-colors py-2.5 px-5 rounded-md font-bold flex items-center justify-center gap-2.5 w-fit cursor-pointer"
         >
-          <Plus size={20} /> Add Game
+          <Plus size={20} color="#fff" /> Add Game
         </button>
       </header>
       <section className="w-full flex flex-col items-center gap-6">
