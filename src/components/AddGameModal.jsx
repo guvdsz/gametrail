@@ -1,20 +1,28 @@
 import { Plus, X, Gamepad } from "lucide-react";
-export default function AddGameModal({ gameList, setGameList, setToggleModal }) {
-    const handleAddGame = (e) => {
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const newGame = {
-          name: form.get("name-input"),
-          platform: form.get("platform-input"),
-        };
-        setGameList([...gameList, newGame]);
-        setToggleModal(false)
-      };
+export default function AddGameModal({
+  gameList,
+  setGameList,
+  setToggleModal,
+}) {
+  const handleAddGame = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const newGame = {
+      name: form.get("name-input"),
+      platform: form.get("platform-input"),
+    };
+    setGameList([...gameList, newGame]);
+    setToggleModal(false);
+  };
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[#00000083]">
       <div className="bg-white w-5/6 rounded-md shadow-lg p-5 flex flex-col items-center max-w-150">
         <Gamepad color="#AD46FF" size={35} className="mb-5" />
-        <form className="text-black flex flex-col w-full gap-2.5" onSubmit={(e) => handleAddGame(e)}>
+        <form
+          className="text-black flex flex-col w-full gap-2.5"
+          onSubmit={(e) => handleAddGame(e)}
+          autoComplete="off"
+        >
           <input
             type="text"
             placeholder="Name"

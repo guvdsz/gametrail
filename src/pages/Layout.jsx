@@ -1,8 +1,9 @@
-import { Menu, X, LogOut } from "lucide-react";
+import { Menu, X, LogOut, LogIn } from "lucide-react";
 import { useState } from "react";
-import { Outlet } from "react-router";
-export default function Layout() {
+import { Outlet, useNavigate } from "react-router";
+export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate()
   return (
     <main className="bg-slate-900 w-full text-white flex flex-col items-center py-10 relative gap-10">
       <div
@@ -12,7 +13,10 @@ export default function Layout() {
       >
         <nav className="flex flex-col items-center gap-5">
           <a className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors">
-            All
+            Profile
+          </a>
+          <a className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors">
+            Home
           </a>
           <a className="hover:bg-purple-700 w-full py-2.5 px-5 text-center cursor-pointer rounded-md transition-colors">
             Completed
@@ -21,8 +25,14 @@ export default function Layout() {
             Platinums
           </a>
         </nav>
-        <button className="bg-[#fb2c369c] hover:bg-red-500 w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm">
-          <LogOut size={15} />
+        <button
+          className={`${
+            !isAuth
+              ? "bg-[#00a63dbb] hover:bg-green-500"
+              : "bg-[#fb2c369c] hover:bg-red-500"
+          } w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm`} onClick={isAuth ? () => setIsAuth((prev) => !prev) :() => navigate("login")}
+        >
+          {isAuth ? <LogOut size={15} /> : <LogIn size={15} />}
         </button>
       </div>
       <button
