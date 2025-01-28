@@ -1,4 +1,5 @@
 import { Plus, X, Gamepad } from "lucide-react";
+import { nanoid } from 'nanoid';
 export default function AddGameModal({
   gameList,
   setGameList,
@@ -10,6 +11,9 @@ export default function AddGameModal({
     const newGame = {
       name: form.get("name-input"),
       platform: form.get("platform-input"),
+      complete: false,
+      platinum: false,
+      id: nanoid()
     };
     setGameList([...gameList, newGame]);
     setToggleModal(false);
