@@ -9,6 +9,7 @@ export default function Home({gameList, setGameList, isAuth}) {
   const handleModal = () => {
     if (!isAuth) {
       navigate("login")
+      return
     }
     setToggleModal(true)
   }
