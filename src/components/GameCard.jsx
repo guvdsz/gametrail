@@ -26,18 +26,20 @@ export default function GameCard({
     <div className="flex bg-slate-700 w-5/6 h-25 rounded-md py-6 px-9 items-center justify-between max-w-150 gap-5">
       <h3 className="font-bold text-lg truncate overflow-hidden">{name}</h3>
       <div className="flex gap-6 items-center justify-center">
-        <BookOpenCheck
-          size={25}
-          color={complete ? "#22C55E" : "#fff"}
-          onClick={() => handleFill("complete")}
-          className="transition-colors"
-        />
-        <Trophy
-          size={25}
-          color={platinum ? "#EAB308" : "#fff"}
-          onClick={() => handleFill("platinum")}
-          className="transition-colors"
-        />
+        <button onClick={() => handleFill("complete")}>
+          <BookOpenCheck
+            size={25}
+            color={complete ? "#22C55E" : "#fff"}
+            className="transition-colors cursor-pointer"
+          />
+        </button>
+        <button onClick={() => handleFill("platinum")}>
+          <Trophy
+            size={25}
+            color={platinum ? "#EAB308" : "#fff"}
+            className="transition-colors cursor-pointer"
+          />
+        </button>
       </div>
     </div>
   );
