@@ -8,7 +8,7 @@ export default function GameCard({ name, id, complete, setGameList }) {
     });
   };
   return (
-    <div className="flex bg-slate-700 w-5/6 h-25 rounded-md py-6 px-9 items-center justify-between max-w-150 gap-10">
+    <div className="flex bg-slate-700 w-9/10 h-25 rounded-md py-6 px-9 items-center justify-between max-w-150 gap-10">
       <h3 className="font-bold text-lg truncate overflow-hidden">{name}</h3>
       <div className="flex gap-6 items-center justify-center">
         <button onClick={() => handleFill()}>
