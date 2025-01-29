@@ -41,7 +41,6 @@ export default function Home({ gameList, setGameList, isAuth }) {
         <div className="flex flex-col items-center justify-center">
           <Gamepad color="#AD46FF" size={35} className="mb-2.5" />
           <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            {" "}
             GameTrail
           </h1>
           <p className="text-gray-400">Track your gaming journey</p>

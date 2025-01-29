@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import useLocalStorageState from "use-local-storage-state";
 import Layout from "./Layouts/Layout";
 import Home from "./pages/Home";
-import AuthRequired from "./Layouts/AuthRequired";
+import LayoutAuthRequired from "./Layouts/LayoutAuthRequired";
 import Login  from "./pages/Login";
 function App() {
   const [gameList, setGameList] = useLocalStorageState("gameList", {
@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout isAuth={isAuth} setIsAuth={setIsAuth}/>}>
-          <Route element={<AuthRequired isAuth={isAuth}/>}>
+          <Route element={<LayoutAuthRequired isAuth={isAuth}/>}>
 
           </Route>
           <Route index element={<Home gameList={gameList} setGameList={setGameList} isAuth={isAuth}/>} />

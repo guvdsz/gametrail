@@ -1,10 +1,6 @@
 import { Plus, X, Gamepad } from "lucide-react";
-import { nanoid } from 'nanoid';
-export default function AddGameModal({
-  gameList,
-  setGameList,
-  setToggleModal,
-}) {
+import { nanoid } from "nanoid";
+export default function AddGameModal({ gameList, setGameList, setToggleModal }) {
   const handleAddGame = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -12,7 +8,7 @@ export default function AddGameModal({
       name: form.get("name-input"),
       platform: form.get("platform-input"),
       complete: false,
-      id: nanoid()
+      id: nanoid(),
     };
     setGameList([...gameList, newGame]);
     setToggleModal(false);
@@ -45,17 +41,14 @@ export default function AddGameModal({
           </select>
           <button
             type="submit"
-            className="mt-4 bg-purple-700 hover:bg-purple-500 text-white p-2 rounded-md 
-                
-                 transition-colors flex justify-center font-semibold items-center cursor-pointer"
+            className="mt-4 bg-purple-700 hover:bg-purple-500 text-white p-2 rounded-md transition-colors 
+            flex justify-center font-semibold items-center cursor-pointer"
           >
             Add
           </button>
           <button
             className=" bg-white hover:bg-purple-200 text-black p-2 rounded-md transition-colors flex justify-center items-center border border-gray-300 font-semibold cursor-pointer"
-            onClick={() =>
-              setToggleModal((prevToggleModal) => !prevToggleModal)
-            }
+            onClick={() => setToggleModal((prevToggleModal) => !prevToggleModal)}
           >
             Cancel
           </button>

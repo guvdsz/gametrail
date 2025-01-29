@@ -5,7 +5,7 @@ export default function Login({ setIsAuth }) {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsAuth(true);
-    navigate("..")
+    navigate("..");
   };
   return (
     <main className="bg-slate-900 w-full text-white flex flex-col items-center py-10 relative gap-10">
@@ -38,15 +38,12 @@ export default function Login({ setIsAuth }) {
           </label>
           <button
             type="submit"
-            className="mt-4 bg-purple-700 hover:bg-purple-500 text-white p-2 rounded-md 
-                
-                transition-colors flex justify-center font-semibold items-center cursor-pointer"
+            className="mt-4 bg-purple-700 hover:bg-purple-500 text-white p-2 rounded-md transition-colors 
+            flex justify-center font-semibold items-center cursor-pointer"
           >
             Sign In
           </button>
-          <span className="text-slate-400 text-center mt-2.5">
-            Type anynthing to sign in
-          </span>
+          <span className="text-slate-400 text-center mt-2.5">Type anynthing to sign in</span>
         </form>
       </div>
     </main>
