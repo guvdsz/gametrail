@@ -29,7 +29,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
       );
     });
   return (
-    <>
+    <div className="w-full pt-10 flex flex-col items-center gap-10">
       {toggleModal && (
         <AddGameModal
           setToggleModal={setToggleModal}
@@ -37,24 +37,15 @@ export default function Home({ gameList, setGameList, isAuth }) {
           setGameList={setGameList}
         />
       )}
-      <header className="text-center flex flex-col items-center gap-10">
-        <div className="flex flex-col items-center justify-center">
-          <Gamepad color="#AD46FF" size={35} className="mb-2.5" />
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            GameTrail
-          </h1>
-          <p className="text-gray-400">Track your gaming journey</p>
-        </div>
-        <button
-          onClick={handleModal}
-          className="fixed top-5 right-20 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 w-10"
-        >
-          <Plus size={20} color="#fff" />
-        </button>
-      </header>
-      <section className="w-full flex flex-col items-center gap-6">
+      <button
+        onClick={handleModal}
+        className="fixed top-5 right-20 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 w-10"
+      >
+        <Plus size={20} color="#fff" />
+      </button>
+      <section className="w-full flex flex-col items-center gap-5">
         {!gameCards || gameList.length === 0 ? "No games to see..." : gameCards}
       </section>
-    </>
+    </div>
   );
 }

@@ -1,24 +1,32 @@
-import { Menu, X, LogOut, LogIn } from "lucide-react";
+import { Menu, X, LogOut, LogIn, Gamepad } from "lucide-react";
 import { useState } from "react";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const handleNavClick = () => {
-    setToggle(false)
-  }
+    setToggle(false);
+  };
   return (
-    <main className="bg-slate-900 w-full text-white flex flex-col items-center py-15 relative gap-5">
+    <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-15 relative gap-10">
       <div
-        className={`bg-[#1d293de7] w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 ${
+        className={`bg-[#12141C]/95 backdrop-blur supports-[backdrop-filter]:bg-[#12141C]/80 w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 ${
           toggle ? "translate-x-0" : "-translate-x-full"
         } flex flex-col items-center justify-between py-10 px-5`}
       >
         <nav className="flex flex-col items-center gap-5">
-          <NavLink to="profile" className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" onClick={handleNavClick}>
+          <NavLink
+            to="profile"
+            className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            onClick={handleNavClick}
+          >
             Profile
           </NavLink>
-          <NavLink to=".." className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" onClick={handleNavClick}>
+          <NavLink
+            to=".."
+            className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            onClick={handleNavClick}
+          >
             Home
           </NavLink>
           <a className="hover:bg-purple-700 w-full py-2.5 px-5 text-center cursor-pointer rounded-md transition-colors">
@@ -30,13 +38,9 @@ export default function Layout({ isAuth, setIsAuth }) {
         </nav>
         <button
           className={`${
-            !isAuth
-              ? "bg-[#00a63dbb] hover:bg-green-500"
-              : "bg-[#fb2c369c] hover:bg-red-500"
+            !isAuth ? "bg-[#00a63dbb] hover:bg-green-500" : "bg-[#fb2c369c] hover:bg-red-500"
           } w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm`}
-          onClick={
-            isAuth ? () => setIsAuth((prev) => !prev) : () => navigate("login")
-          }
+          onClick={isAuth ? () => setIsAuth((prev) => !prev) : () => navigate("login")}
         >
           {isAuth ? <LogOut size={15} /> : <LogIn size={15} />}
         </button>
