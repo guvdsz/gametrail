@@ -1,4 +1,4 @@
-import { Plus, X, Gamepad } from "lucide-react";
+import { Gamepad } from "lucide-react";
 import { nanoid } from "nanoid";
 export default function AddGameModal({ gameList, setGameList, setToggleModal }) {
   const handleAddGame = (e) => {
@@ -15,7 +15,7 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
   };
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[#00000083] z-1">
-      <div className="bg-slate-900 w-5/6 rounded-md shadow-lg p-5 flex flex-col items-center max-w-150">
+      <div className="bg-slate-800 w-5/6 rounded-md shadow-lg p-5 flex flex-col items-center max-w-150">
         <Gamepad color="#AD46FF" size={35} className="mb-5" />
         <form
           className="text-black flex flex-col w-full gap-2.5"
@@ -27,12 +27,12 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
             placeholder="Name"
             id="name-input"
             name="name-input"
-            className="placeholder-white p-2 border border-gray-300 rounded-md outline-none focus:border-purple-600 transition-colors text-white"
+            className="placeholder-white p-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white"
           />
           <select
             id="platform-input"
             name="platform-input"
-            className="placeholder-white py-1.5 px-2 border border-gray-300 rounded-md outline-none focus:border-purple-600 transition-colors text-white bg-slate-900"
+            className="placeholder-white py-1.5 px-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white bg-slate-800"
           >
             <option value="pc">PC</option>
             <option value="switch">Switch</option>

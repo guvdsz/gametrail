@@ -1,7 +1,4 @@
-import { Trophy, BookOpenCheck } from "lucide-react";
-import { FaXbox, FaPlaystation } from "react-icons/fa";
-import { BsNintendoSwitch } from "react-icons/bs";
-import { FaComputer } from "react-icons/fa6";
+import { Trophy } from "lucide-react";
 export default function GameCard({ name, id, complete, setGameList }) {
   const handleFill = () => {
     setGameList((prevList) => {
