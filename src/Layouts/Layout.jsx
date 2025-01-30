@@ -1,5 +1,5 @@
 import { Menu, X, LogOut, LogIn, Gamepad } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet, useNavigate, NavLink, useSearchParams } from "react-router-dom";
 
 export default function Layout({ isAuth, setIsAuth }) {
@@ -7,10 +7,31 @@ export default function Layout({ isAuth, setIsAuth }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const param = searchParams.get("complete");
   const navigate = useNavigate();
+  const menuRef = useRef();
+  const buttonRef = useRef();
+  
+  const handleClickOutside = (event) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      buttonRef.current &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setToggle(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-15 relative gap-10">
       <div
+        ref={menuRef}
         className={`bg-[#12141C]/95 backdrop-blur supports-[backdrop-filter]:bg-[#12141C]/80 w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 border-r border-gray-600/25 ${
           toggle ? "translate-x-0" : "-translate-x-full"
         } flex flex-col items-center justify-between py-10 px-5`}
@@ -79,6 +100,7 @@ export default function Layout({ isAuth, setIsAuth }) {
         </button>
       </div>
       <button
+        ref={buttonRef}
         className="fixed top-5 right-5 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 flex items-center justify-center w-10"
         onClick={() => setToggle((prevToggle) => !prevToggle)}
       >
