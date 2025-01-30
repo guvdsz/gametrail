@@ -1,6 +1,6 @@
 import GameCard from "../components/GameCard";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import AddGameModal from "../components/AddGameModal";
 
@@ -18,33 +18,20 @@ export default function Home({ gameList, setGameList, isAuth }) {
   };
   const displayedGameCards = completeParam
     ? gameList.filter((game) => game.complete === (completeParam === "true"))
-    : gameList;
+    : gameList.sort((a, b) => a.complete - b.complete);
+
   const gameCards =
-  displayedGameCards &&
+    displayedGameCards &&
     isAuth &&
-    displayedGameCards.map((game) => {
-      if (completeParam && game.complete) {
-        return (
-          <GameCard
-            name={game.name}
-            key={game.id}
-            id={game.id}
-            complete={game.complete}
-            setGameList={setGameList}
-          />
-        );
-      } else {
-        return (
-          <GameCard
-            name={game.name}
-            key={game.id}
-            id={game.id}
-            complete={game.complete}
-            setGameList={setGameList}
-          />
-        );
-      }
-    });
+    displayedGameCards.map((game) => (
+      <GameCard
+        name={game.name}
+        key={game.id}
+        id={game.id}
+        complete={game.complete}
+        setGameList={setGameList}
+      />
+    ));
   return (
     <div className="w-full pt-10 flex flex-col items-center gap-10">
       {toggleModal && (

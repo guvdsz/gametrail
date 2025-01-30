@@ -10,9 +10,7 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
       complete: false,
       id: nanoid(),
     };
-    const updatedGameList = [newGame, ...gameList];
-    updatedGameList.sort((a, b) => a.complete - b.complete);
-    setGameList(updatedGameList);
+    setGameList([newGame, ...gameList]);
     setToggleModal(false);
   };
   return (
