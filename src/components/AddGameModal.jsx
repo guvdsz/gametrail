@@ -32,7 +32,7 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
           <select
             id="platform-input"
             name="platform-input"
-            className="placeholder-white py-1.5 px-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white bg-slate-800"
+            className="placeholder-white p-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white bg-slate-800"
           >
             <option value="pc">PC</option>
             <option value="switch">Switch</option>

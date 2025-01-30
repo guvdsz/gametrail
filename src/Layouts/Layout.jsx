@@ -16,25 +16,22 @@ export default function Layout({ isAuth, setIsAuth }) {
       >
         <nav className="flex flex-col items-center gap-5">
           <NavLink
-            to="profile"
-            className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
-            onClick={handleNavClick}
-          >
-            Profile
-          </NavLink>
-          <NavLink
             to=".."
-            className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
             onClick={handleNavClick}
           >
             Home
           </NavLink>
-          <a className="hover:bg-purple-700 w-full py-2.5 px-5 text-center cursor-pointer rounded-md transition-colors">
+          <NavLink
+            to="profile"
+            className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
+            onClick={handleNavClick}
+          >
+            Profile
+          </NavLink>
+          <NavLink to="completed" className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}>
             Completed
-          </a>
-          <a className="hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors">
-            Platinums
-          </a>
+          </NavLink>
         </nav>
         <button
           className={`${
