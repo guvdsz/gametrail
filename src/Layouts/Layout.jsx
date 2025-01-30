@@ -1,8 +1,10 @@
 import { Menu, X, LogOut, LogIn, Gamepad } from "lucide-react";
 import { useState } from "react";
-import { Outlet, useNavigate, NavLink } from "react-router-dom";
+import { Outlet, useNavigate, NavLink, useSearchParams } from "react-router-dom";
 export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams()
+  const param = searchParams.get("complete")
   const navigate = useNavigate();
   const handleNavClick = () => {
     setToggle(false);
@@ -17,27 +19,42 @@ export default function Layout({ isAuth, setIsAuth }) {
         <nav className="flex flex-col items-center gap-5">
           <NavLink
             to=".."
-            className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
-            onClick={handleNavClick}
+            className={({ isActive }) => isActive && param === null ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
+            onClick={() => {
+              setToggle(false);
+            }}
           >
             Home
           </NavLink>
           <NavLink
             to="profile"
-            className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
-            onClick={handleNavClick}
+            className={({ isActive }) => isActive && param === null ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
+            onClick={() => {
+              handleNavClick();
+              setToggle(false);
+            }}
           >
             Profile
           </NavLink>
-          <NavLink to="completed" className={({ isActive }) => isActive ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}>
+          <button onClick={() => {
+            setSearchParams({complete:true});
+            setToggle(false);
+          }} className={param === "true" ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}>
             Completed
-          </NavLink>
+          </button>
         </nav>
         <button
           className={`${
             !isAuth ? "bg-[#00a63dbb] hover:bg-green-500" : "bg-[#fb2c369c] hover:bg-red-500"
           } w-full font-semibold py-3 px-4 text-center cursor-pointer rounded-md transition-colors flex justify-center gap-1 text-sm`}
-          onClick={isAuth ? () => setIsAuth((prev) => !prev) : () => navigate("login")}
+          onClick={() => {
+            if (isAuth) {
+              setIsAuth((prev) => !prev);
+            } else {
+              navigate("login");
+            }
+            setToggle(false);
+          }}
         >
           {isAuth ? <LogOut size={15} /> : <LogIn size={15} />}
         </button>

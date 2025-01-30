@@ -1,12 +1,14 @@
 import GameCard from "../components/GameCard";
-import { Plus, Gamepad } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import AddGameModal from "../components/AddGameModal";
 
 export default function Home({ gameList, setGameList, isAuth }) {
   const [toggleModal, setToggleModal] = useState(false);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const completeParam = searchParams.get("complete");
   const handleModal = () => {
     if (!isAuth) {
       navigate("login");
@@ -14,19 +16,34 @@ export default function Home({ gameList, setGameList, isAuth }) {
     }
     setToggleModal(true);
   };
+  const displayedgameCards = completeParam
+    ? gameList.filter((game) => game.complete === (completeParam === "true"))
+    : gameList;
   const gameCards =
-    gameList &&
+    displayedgameCards &&
     isAuth &&
-    gameList.map((game) => {
-      return (
-        <GameCard
-          name={game.name}
-          key={game.id}
-          id={game.id}
-          complete={game.complete}
-          setGameList={setGameList}
-        />
-      );
+    displayedgameCards.map((game) => {
+      if (completeParam && game.complete) {
+        return (
+          <GameCard
+            name={game.name}
+            key={game.id}
+            id={game.id}
+            complete={game.complete}
+            setGameList={setGameList}
+          />
+        );
+      } else {
+        return (
+          <GameCard
+            name={game.name}
+            key={game.id}
+            id={game.id}
+            complete={game.complete}
+            setGameList={setGameList}
+          />
+        );
+      }
     });
   return (
     <div className="w-full pt-10 flex flex-col items-center gap-10">
@@ -44,7 +61,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
         <Plus size={20} color="#fff" />
       </button>
       <section className="w-full flex flex-col items-center gap-5">
-        {!gameCards || gameList.length === 0 ? "No games to see..." : gameCards}
+        {!displayedgameCards || displayedgameCards.length === 0 ? "No games to see..." : gameCards}
       </section>
     </div>
   );
