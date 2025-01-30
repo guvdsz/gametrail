@@ -14,7 +14,7 @@ export default function GameCard({ name, id, complete, setGameList }) {
   };
 
   return (
-    <div className="flex bg-[#12141C] w-9/10 h-25 rounded-lg py-7.5 px-9 items-center justify-between max-w-150 gap-5 border border-purple-500/25 hover:border-purple-500/50 transition-colors">
+    <div className="flex bg-[#12141C] w-9/10 h-25 rounded-lg p-7.5 items-center justify-between max-w-150 gap-5 border border-purple-500/25 hover:border-purple-500/50 transition-colors">
       <h3 className="font-bold text-lg truncate overflow-hidden text-gray-300">{name}</h3>
       <div className="flex gap-6 items-center justify-center">
         <button
