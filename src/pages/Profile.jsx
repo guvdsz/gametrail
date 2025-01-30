@@ -1,6 +1,6 @@
 import { User, Gamepad, Trophy } from "lucide-react";
-import { useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
+
 export default function Profile({totalGames, totalCompletedGames}) {
   return (
     <div className="w-full flex flex-col items-center gap-4">

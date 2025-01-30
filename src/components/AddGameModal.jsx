@@ -13,6 +13,7 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
     setGameList([newGame, ...gameList]);
     setToggleModal(false);
   };
+  
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[#00000083] z-1">
       <div className="bg-slate-800 w-5/6 rounded-md shadow-lg p-5 flex flex-col items-center max-w-150">

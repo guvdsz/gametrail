@@ -1,11 +1,13 @@
 import { Menu, X, LogOut, LogIn, Gamepad } from "lucide-react";
 import { useState } from "react";
 import { Outlet, useNavigate, NavLink, useSearchParams } from "react-router-dom";
+
 export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const param = searchParams.get("complete");
   const navigate = useNavigate();
+
   return (
     <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-15 relative gap-10">
       <div

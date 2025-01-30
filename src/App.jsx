@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import LayoutAuthRequired from "./Layouts/LayoutAuthRequired"
 import Login  from "./pages/Login";
 import Profile from "./pages/Profile";
+
 function App() {
   const [gameList, setGameList] = useLocalStorageState("gameList", {
     defaultValue: [],
@@ -15,6 +16,7 @@ function App() {
   });
   const [totalGames, setTotalGames] = useState(0)
   const [totalCompletedGames, setTotalCompletedGames] = useState(0)
+
   useEffect(() => {
     let totalGamesSum = 0
     let totalCompletedGamesSum = 0
@@ -25,6 +27,7 @@ function App() {
     setTotalGames(totalGamesSum)
     setTotalCompletedGames(totalCompletedGamesSum)
   }, [gameList])
+  
   return (
     <BrowserRouter>
       <Routes>
