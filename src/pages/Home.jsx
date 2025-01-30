@@ -41,7 +41,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
     ));
 
   return (
-    <div className="w-full pt-10 flex flex-col items-center gap-10">
+    <div className={`w-full ${!displayedGameCards || !isAuth || displayedGameCards.length === 0 ? "justify-center pt-0" : "pt-10"} flex flex-col items-center gap-10 h-full ${!displayedGameCards || !isAuth || displayedGameCards.length === 0 && "justify-center pt-0"}`}>
       {toggleModal && (
         <AddGameModal
           setToggleModal={setToggleModal}
@@ -59,7 +59,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
       )}
       <section className="w-full flex flex-col items-center gap-5">
         {!displayedGameCards || !isAuth || displayedGameCards.length === 0
-          ? "No games to see..."
+          ? <h2 className="text-xl font-bold mb-3 text-purple-300">No Games Yet...</h2>
           : gameCards}
       </section>
     </div>
