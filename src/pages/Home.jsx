@@ -16,13 +16,13 @@ export default function Home({ gameList, setGameList, isAuth }) {
     }
     setToggleModal(true);
   };
-  const displayedgameCards = completeParam
+  const displayedGameCards = completeParam
     ? gameList.filter((game) => game.complete === (completeParam === "true"))
     : gameList;
   const gameCards =
-    displayedgameCards &&
+  displayedGameCards &&
     isAuth &&
-    displayedgameCards.map((game) => {
+    displayedGameCards.map((game) => {
       if (completeParam && game.complete) {
         return (
           <GameCard
@@ -54,14 +54,14 @@ export default function Home({ gameList, setGameList, isAuth }) {
           setGameList={setGameList}
         />
       )}
-      <button
+      {!completeParam && <button
         onClick={handleModal}
         className="fixed top-5 right-20 hover:bg-purple-500 bg-purple-700 p-2.5 rounded-md cursor-pointer transition-colors h-10 w-10"
       >
         <Plus size={20} color="#fff" />
-      </button>
+      </button>}
       <section className="w-full flex flex-col items-center gap-5">
-        {!displayedgameCards || displayedgameCards.length === 0 ? "No games to see..." : gameCards}
+        {!displayedGameCards || displayedGameCards.length === 0 ? "No games to see..." : gameCards}
       </section>
     </div>
   );

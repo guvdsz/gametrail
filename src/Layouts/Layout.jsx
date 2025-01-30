@@ -6,9 +6,6 @@ export default function Layout({ isAuth, setIsAuth }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const param = searchParams.get("complete");
   const navigate = useNavigate();
-  const handleNavClick = () => {
-    setToggle(false);
-  };
   return (
     <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-15 relative gap-10">
       <div
@@ -17,6 +14,19 @@ export default function Layout({ isAuth, setIsAuth }) {
         } flex flex-col items-center justify-between py-10 px-5`}
       >
         <nav className="flex flex-col items-center gap-5">
+          <NavLink
+            to="profile"
+            className={({ isActive }) =>
+              isActive && param === null
+                ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+                : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            }
+            onClick={() => {
+              setToggle(false);
+            }}
+          >
+            Profile
+          </NavLink>
           <NavLink
             to=".."
             className={({ isActive }) =>
@@ -28,21 +38,7 @@ export default function Layout({ isAuth, setIsAuth }) {
               setToggle(false);
             }}
           >
-            Home
-          </NavLink>
-          <NavLink
-            to="profile"
-            className={({ isActive }) =>
-              isActive && param === null
-                ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
-                : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
-            }
-            onClick={() => {
-              handleNavClick();
-              setToggle(false);
-            }}
-          >
-            Profile
+            All
           </NavLink>
           <NavLink
             to="../?complete=true"
