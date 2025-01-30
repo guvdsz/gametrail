@@ -8,15 +8,15 @@ export default function Login({ setIsAuth }) {
     navigate("..");
   };
   return (
-    <main className="bg-slate-900 w-full text-white flex flex-col items-center py-10 relative gap-10">
+    <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-10 relative gap-10">
       <div className="flex flex-col items-center justify-center">
-        <Gamepad color="#AD46FF" size={35} className="mb-2.5" />
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+        <Gamepad size={40} className="text-purple-500" />
+        <h1 className="text-2xl bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent mb-1">
           GameTrail
         </h1>
         <p className="text-gray-400">Track your gaming journey</p>
       </div>
-      <div className="bg-slate-800 w-5/6 p-7.5 rounded-md max-w-150">
+      <div className="bg-[#12141C] border border-purple-500/25 w-5/6 p-7.5 rounded-md max-w-150">
         <form className="flex flex-col gap-5" onSubmit={handleLogin} autoComplete="off">
           <label className="flex flex-col gap-2">
             <span className="text-slate-200 text-md">Email</span>
@@ -24,7 +24,7 @@ export default function Login({ setIsAuth }) {
               type="email"
               name="email-input"
               id="email-input"
-              className="bg-slate-700 rounded-md py-1.5 px-2 outline-none border border-transparent focus:border-purple-500 transition-colors"
+              className="rounded-md py-1.5 px-2 outline-none border border-purple-100/75 focus:border-purple-500 transition-colors"
             />
           </label>
           <label className="flex flex-col gap-2">
@@ -33,7 +33,7 @@ export default function Login({ setIsAuth }) {
               type="password"
               name="password-input"
               id="password-input"
-              className="bg-slate-700 rounded-md py-1.5 px-2 outline-none border border-transparent focus:border-purple-500 transition-colors"
+              className=" rounded-md py-1.5 px-2 outline-none border border-purple-100/75 focus:border-purple-500 transition-colors"
             />
           </label>
           <button
