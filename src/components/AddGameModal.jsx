@@ -4,9 +4,10 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
   const handleAddGame = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const nameValue = form.get("name-input")
+    if (!nameValue) return
     const newGame = {
       name: form.get("name-input"),
-      platform: form.get("platform-input"),
       complete: false,
       id: nanoid(),
     };
@@ -15,9 +16,9 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
   };
   
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#00000083] z-1">
-      <div className="bg-slate-800 w-5/6 rounded-md shadow-lg p-5 flex flex-col items-center max-w-150">
-        <Gamepad color="#AD46FF" size={35} className="mb-5" />
+    <div className="fixed inset-0 flex items-center justify-center bg-[#000000af] z-1">
+      <div className="bg-[#12141C] w-5/6 rounded-md shadow-lg p-7.5 flex flex-col items-center max-w-150 border border-purple-500/25">
+        <Gamepad size={35} className="mb-7.5 text-purple-500" />
         <form
           className="text-black flex flex-col w-full gap-2.5"
           onSubmit={(e) => handleAddGame(e)}
@@ -30,16 +31,6 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
             name="name-input"
             className="placeholder-white p-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white"
           />
-          <select
-            id="platform-input"
-            name="platform-input"
-            className="placeholder-white p-2 border border-gray-300 rounded-md outline-none focus:border-purple-500 transition-colors text-white bg-slate-800"
-          >
-            <option value="pc">PC</option>
-            <option value="switch">Switch</option>
-            <option value="playstation">Playstation</option>
-            <option value="xbox">Xbox</option>
-          </select>
           <button
             type="submit"
             className="mt-4 bg-purple-700 hover:bg-purple-500 text-white p-2 rounded-md transition-colors 
@@ -48,7 +39,7 @@ export default function AddGameModal({ gameList, setGameList, setToggleModal }) 
             Add
           </button>
           <button
-            className=" bg-white hover:bg-purple-200 text-black p-2 rounded-md transition-colors flex justify-center items-center border border-gray-300 font-semibold cursor-pointer"
+            className=" bg-[#fafafa] hover:bg-purple-200 text-black p-2 rounded-md transition-colors flex justify-center items-center border border-gray-300 font-semibold cursor-pointer"
             onClick={() => setToggleModal((prevToggleModal) => !prevToggleModal)}
           >
             Cancel

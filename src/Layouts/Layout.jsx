@@ -11,11 +11,17 @@ export default function Layout({ isAuth, setIsAuth }) {
   return (
     <main className="bg-[#0A0B0F] w-full text-white flex flex-col items-center py-15 relative gap-10">
       <div
-        className={`bg-[#12141C]/95 backdrop-blur supports-[backdrop-filter]:bg-[#12141C]/80 w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 ${
+        className={`bg-[#12141C]/95 backdrop-blur supports-[backdrop-filter]:bg-[#12141C]/80 w-40 h-dvh fixed left-0 top-0 transition-transform duration-300 border-r border-gray-600/25 ${
           toggle ? "translate-x-0" : "-translate-x-full"
         } flex flex-col items-center justify-between py-10 px-5`}
       >
         <nav className="flex flex-col items-center gap-5">
+          <h1 className="flex flex-col items-center justify-center mb-4 text-lg">
+            <Gamepad size={30} className="text-purple-500" />
+            <span className="bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent">
+              GameTrail
+            </span>
+          </h1>
           <NavLink
             to="profile"
             className={({ isActive }) =>
