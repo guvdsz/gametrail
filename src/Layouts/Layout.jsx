@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Outlet, useNavigate, NavLink, useSearchParams } from "react-router-dom";
 export default function Layout({ isAuth, setIsAuth }) {
   const [toggle, setToggle] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams()
-  const param = searchParams.get("complete")
+  const [searchParams, setSearchParams] = useSearchParams();
+  const param = searchParams.get("complete");
   const navigate = useNavigate();
   const handleNavClick = () => {
     setToggle(false);
@@ -19,7 +19,11 @@ export default function Layout({ isAuth, setIsAuth }) {
         <nav className="flex flex-col items-center gap-5">
           <NavLink
             to=".."
-            className={({ isActive }) => isActive && param === null ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
+            className={({ isActive }) =>
+              isActive && param === null
+                ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+                : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            }
             onClick={() => {
               setToggle(false);
             }}
@@ -28,7 +32,11 @@ export default function Layout({ isAuth, setIsAuth }) {
           </NavLink>
           <NavLink
             to="profile"
-            className={({ isActive }) => isActive && param === null ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}
+            className={({ isActive }) =>
+              isActive && param === null
+                ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+                : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            }
             onClick={() => {
               handleNavClick();
               setToggle(false);
@@ -36,12 +44,19 @@ export default function Layout({ isAuth, setIsAuth }) {
           >
             Profile
           </NavLink>
-          <button onClick={() => {
-            setSearchParams({complete:true});
-            setToggle(false);
-          }} className={param === "true" ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors" : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"}>
+          <NavLink
+            to="../?complete=true"
+            onClick={() => {
+              setToggle(false);
+            }}
+            className={
+              param === "true"
+                ? "bg-purple-700 hover:bg-purple-500 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+                : "hover:bg-purple-700 w-full py-2 px-4 text-center cursor-pointer rounded-md transition-colors"
+            }
+          >
             Completed
-          </button>
+          </NavLink>
         </nav>
         <button
           className={`${
