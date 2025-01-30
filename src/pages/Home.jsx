@@ -59,7 +59,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
       )}
       <section className="w-full flex flex-col items-center gap-5">
         {!displayedGameCards || !isAuth || displayedGameCards.length === 0
-          ? <h2 className="text-xl font-bold mb-3 text-purple-300">No Games Yet...</h2>
+          ? <h2 className="text-xl font-bold text-purple-300">No Games Yet...</h2>
           : gameCards}
       </section>
     </div>
