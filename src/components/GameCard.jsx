@@ -20,7 +20,7 @@ export default function GameCard({ name, id, complete, setGameList }) {
         <button
           onClick={() => handleFill()}
           className={`h-10 w-10 rounded-full flex items-center justify-center bg-purple-600 p-0 hover:bg-purple-500 cursor-pointer transition-colors ${
-            complete ? "bg-purple-600 hover:bg-purple-700" : "bg-slate-800 hover:bg-slate-700"
+            complete ? "bg-purple-600 hover:bg-purple-500" : "bg-slate-800 hover:bg-slate-700"
           }`}
         >
           <Trophy
@@ -32,7 +32,7 @@ export default function GameCard({ name, id, complete, setGameList }) {
         </button>
         <button
           onClick={handleDelete}
-          className="h-10 w-10 rounded-full flex items-center justify-center bg-red-900 p-0 hover:bg-red-800  cursor-pointer transition-colors"
+          className="h-10 w-10 rounded-full flex items-center justify-center bg-red-500 p-0 hover:bg-red-400  cursor-pointer transition-colors"
         >
           <X size={15}/>
         </button>
