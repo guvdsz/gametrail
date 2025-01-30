@@ -13,12 +13,24 @@ function App() {
   const [isAuth, setIsAuth] = useLocalStorageState("isAuth", {
     defaultValue: false,
   });
+  const [totalGames, setTotalGames] = useState(0)
+  const [totalCompletedGames, setTotalCompletedGames] = useState(0)
+  useEffect(() => {
+    let totalGamesSum = 0
+    let totalCompletedGamesSum = 0
+    gameList && gameList.map((game) => {
+      totalGamesSum ++
+      if (game.complete) totalCompletedGamesSum ++
+    })
+    setTotalGames(totalGamesSum)
+    setTotalCompletedGames(totalCompletedGamesSum)
+  }, [gameList])
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout isAuth={isAuth} setIsAuth={setIsAuth}/>}>
           <Route element={<LayoutAuthRequired isAuth={isAuth}/>}>
-            <Route path="profile" element={<Profile/>}/>
+            <Route path="profile" element={<Profile totalGames={totalGames} totalCompletedGames={totalCompletedGames}/>}/>
           </Route>
           <Route index element={<Home gameList={gameList} setGameList={setGameList} isAuth={isAuth}/>} />
         </Route>
