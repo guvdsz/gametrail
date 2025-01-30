@@ -14,7 +14,7 @@ export default function GameCard({ name, id, complete, setGameList }) {
         <button onClick={() => handleFill()}>
           <Trophy
             size={25}
-            className={`${complete ? `text-purple-600` : `text-white`} transition-colors cursor-pointer`}
+            className={`${complete ? `text-purple-600 hover:text-purple-400` : `text-white`} transition-colors cursor-pointer`}
           />
         </button>
       </div>
