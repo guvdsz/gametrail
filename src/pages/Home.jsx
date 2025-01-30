@@ -16,7 +16,10 @@ export default function Home({ gameList, setGameList, isAuth }) {
     }
     setToggleModal(true);
   };
-  const displayedGameCards = completeParam
+  if (completeParam === "true" && !isAuth) {
+    navigate("login") 
+  }
+  const displayedGameCards = (completeParam && isAuth )
     ? gameList.filter((game) => game.complete === (completeParam === "true"))
     : gameList.sort((a, b) => a.complete - b.complete);
 
@@ -48,7 +51,7 @@ export default function Home({ gameList, setGameList, isAuth }) {
         <Plus size={20} color="#fff" />
       </button>}
       <section className="w-full flex flex-col items-center gap-5">
-        {!displayedGameCards || displayedGameCards.length === 0 ? "No games to see..." : gameCards}
+        {!displayedGameCards || !isAuth || displayedGameCards.length === 0 ? "No games to see..." : gameCards}
       </section>
     </div>
   );
